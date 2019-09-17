@@ -2533,7 +2533,7 @@ $('#container2').on('click', () => {
 var contlayersconsulta = 0;
 $('#queryToolBuscar').on('click', () => {
 
-    
+
 
     var consulta = $('#queryTool').val().toLowerCase();
     var url = `${host}/executa/query?query=${consulta}`;
@@ -2857,24 +2857,28 @@ $('#queryToolBuscar').click();
 
 
 
-// var nomes = ["adriano", "camila"];
-// var materias = ["matematica", "PHP"];
+// var nomes = ["adriano", "camila","andre","juliana","larissa","pedro","aline","tamires","paulo"];
+// var materias = ["matematica", "PHP","Java","C#","SQL","Python"];
 // var nomesUsados = [];
-// var Dados = { aluno: [] , materia : []};
+// var Dados = { aluno: [], materia: [] };
 
 // var CreateAlunos = () => {
 //     var quantidade = nomes.length;
 //     while (quantidade > 0) {
-//         var nome = nomes[quantidade];
+//         var nome = nomes[quantidade - 1];
 //         var nota = (Math.random() * 10).toFixed(2);
+//         var idade;
 //         do {
-//             idade = (Math.random() * 10).toFixed(0);
+//             idade = (Math.random() * 100).toFixed(0);
+
 //         } while (idade < 18 || idade > 60);
 //         var rg = "";
 //         for (var i = 0; i < 8; i++) {
 //             rg += (Math.random() * 10).toFixed(0).toString();
 //         }
-
+//         if (rg.length > 8) {
+//             rg = rg.substring(0, 8);
+//         }
 //         aluno = {
 //             nome: nome,
 //             idade: idade,
@@ -2884,30 +2888,30 @@ $('#queryToolBuscar').click();
 
 //         Dados.aluno.push(aluno);
 //         quantidade--;
-
 //     }
+    
 // }
-
 
 // var CreateMaterias = () => {
 //     var _materias = [];
 //     var q = materias.length;
-//     var a = alunos.aluno.length;
+//     var a = Dados.aluno.length;
 //     var parar = 10;
 //     while (parar > 0) {
 //         var i = (Math.random() * 10).toFixed(0);
-//         while (i > q || i < q) {
-//             i = (Math.random() * 10).toFixed(0);
-//         }
-//         var _materia = materias[i];
-//         var j = (Math.random() * 10).toFixed(0);
-//         while (j > a || j < a) {
-//             l = (Math.random() * 10).toFixed(0);
-//         }
-//         var _aluno = alunos.aluno[j];
-
+//         while(i > q || i == 0){
+//             i = (Math.random() * 10).toFixed(0); 
+//         }   
+//         var _materia = materias[i-1];
+//         var j = (Math.random() * 10).toFixed(0); 
+//         while(j > Dados.aluno.length || j == 0){
+//             j = (Math.random() * 10).toFixed(0); 
+//         }   
+//         console.log(j);
+//         var _aluno = Dados.aluno[j-1];
+//         console.log(_aluno);
 //         var newMateria = { materia: _materia, rg: _aluno.rg };
-//         if (_materias.indexOf(newMateria) == -1) {
+//         if ($.inArray(newMateria,_materias)===-1) {
 //             _materias.push(newMateria);
 //             parar--;
 //         }
@@ -2916,15 +2920,12 @@ $('#queryToolBuscar').click();
 //     Dados.materia = _materias;
 // }
 
-
-
 // CreateAlunos();
 // CreateMaterias();
 
 
-
 // $.ajax({
-//     url: `/insert/alunos`,
+//     url: `/inserir/alunos`,
 //     type: 'POST',
 //     contentType: 'application/json',
 //     data: JSON.stringify(Dados),
@@ -3005,7 +3006,7 @@ $('#queryToolBuscar').click();
 //                 }else{
 //                     atualizar_table_result(data);
 //                 }
-               
+
 //             },
 //             error: function (error) {
 //                 alert(error)
@@ -3035,5 +3036,5 @@ $('#queryToolBuscar').click();
 //     });
 
 //     map.addLayer(shpLayer);
-    
+
 // })

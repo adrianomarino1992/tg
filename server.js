@@ -46,21 +46,73 @@ var pool = new Pool({
 //   .then(log => console.log(shp2Json))  
 // .catch(error => console.error(error.stack));
 
-app.get('/return/shp', function(req,res){
+app.get('/return/shp', function (req, res) {
     var shapefile = require("shapefile");
     var shp2Json = [];
     shapefile.open("C:/Users/USER/Desktop/shps/jacarei.shp")
-      .then(source => source.read()
-        .then(function log(result) {
-          if (result.done) return;
-         // console.log(result.value);
-          shp2Json.push(result.value);                 
-          return source.read().then(log);
-        }))
+        .then(source => source.read()
+            .then(function log(result) {
+                if (result.done) return;
+                // console.log(result.value);
+                shp2Json.push(result.value);
+                return source.read().then(log);
+            }))
         .then(() => res.json(shp2Json))
-      .catch(error => console.error(error.stack));
-    
+        .catch(error => console.error(error.stack));
+
 })
+
+
+
+
+
+
+
+app.post('/inserir/alunos', function (request, response) {
+    inserir_a_m(request, response);
+});
+
+function inserir_a_m(req, resp) {
+
+    var dados = req.body;
+
+    var InsertAluno = `INSERT INTO aluno VALUES `;
+    var InsertMateria = `INSERT INTO materia VALUES `;
+
+    for (var a of dados.aluno) {
+        InsertAluno += `('${a.nome}',${a.idade},${a.nota},'${a.rg}'),`;
+    }
+
+    InsertAluno = InsertAluno.substring(0, InsertAluno.length - 1);
+    InsertAluno += `;`;
+
+    for (var m of dados.materia) {
+        InsertMateria += `('${m.materia}','${m.rg}'),`;
+    }
+
+    InsertMateria = InsertMateria.substring(0, InsertMateria.length - 1);
+    InsertMateria += `;`;
+
+
+    pool.query(InsertAluno, (error, result) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('Alunos inseridos com sucesso ...');
+            console.log('Inserindo materias ...');
+            pool.query(InsertMateria, (error, result) => {
+
+                if (error) {
+                    console.error(error);
+                } else {
+                    console.log('Sucesso');
+                }
+            })
+        }
+    })
+}
+
+
 
 
 
@@ -313,6 +365,6 @@ app.post('/owbanco', (req, res) => {
 
 
 
-app.listen(80, function () {
-    console.log('Servidor rodando na porta 80!');
+app.listen(process.env.PORT || 80, function () {
+    console.log('Servidor rodando na porta 80 !');
 });
