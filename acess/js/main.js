@@ -1,10 +1,14 @@
-// autor: Adriano Marino Balera adriano.marino1992@gmail.com
-// trabalho de conclusão do curso de Geoprocessamento
+// autor: Adriano Marino Balera 
+// email: adriano.marino1992@gmail.com
+// trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí 
 
 
 
 /* variaveis globais */
 
+
+var allQueryInputs;
+var allQueryResults;
 var allVisibleLayers = { layers: [] };
 var layersLegenda = [];
 var DoubleLayers = [];
@@ -355,9 +359,7 @@ function bufferTool(pixel) {
             alert('Tempo de conecção expirou, tente um buffer menor !');
         }, 15000);
 
-        // $.getJSON(encodeURI(url),(data)=>{
-        //     console.log(data);
-        // })
+        
 
     })
 }
@@ -2534,7 +2536,6 @@ var contlayersconsulta = 0;
 $('#queryToolBuscar').on('click', () => {
 
 
-
     var consulta = $('#queryTool').val().toLowerCase();
     var url = `${host}/executa/query?query=${consulta}`;
     var url = encodeURI(url);
@@ -2548,7 +2549,6 @@ $('#queryToolBuscar').on('click', () => {
         if (data.erro) {
             alert(data.erro);
         } else {
-            //console.log(data);
             if (consulta.indexOf("mapa") != -1) {
                 createFeaturesFromJSON(data, consulta, "consulta");
                 contlayersconsulta++;
@@ -2625,6 +2625,7 @@ $('#tentevc').on('dragend', (event) => {
         $('#abatutorials').fadeIn();
         $('#tentevc').css('display', 'none');
         $('#tutoriasCorpo').fadeOut();
+        
     }
 })
 
@@ -2635,6 +2636,7 @@ $('#abatutorials').on('dragend', (event) => {
         $('#abatutorials').css('display', 'none');
         $('#tentevc').fadeIn();
         $('#tutoriasCorpo').fadeIn();
+        
     }
 })
 
@@ -2857,184 +2859,325 @@ $('#queryToolBuscar').click();
 
 
 
-// var nomes = ["adriano", "camila","andre","juliana","larissa","pedro","aline","tamires","paulo"];
-// var materias = ["matematica", "PHP","Java","C#","SQL","Python"];
-// var nomesUsados = [];
-// var Dados = { aluno: [], materia: [] };
+var _checkInputsDinamicos = 0;
+function setContent(div, titulo, consulta, colunas, linhas) {
+    _checkInputsDinamicos++;
+    $(div).append(`
+    <br>
+    <p>
+        EXEMPLO : ${titulo}
 
-// var CreateAlunos = () => {
-//     var quantidade = nomes.length;
-//     while (quantidade > 0) {
-//         var nome = nomes[quantidade - 1];
-//         var nota = (Math.random() * 10).toFixed(2);
-//         var idade;
-//         do {
-//             idade = (Math.random() * 100).toFixed(0);
-
-//         } while (idade < 18 || idade > 60);
-//         var rg = "";
-//         for (var i = 0; i < 8; i++) {
-//             rg += (Math.random() * 10).toFixed(0).toString();
-//         }
-//         if (rg.length > 8) {
-//             rg = rg.substring(0, 8);
-//         }
-//         aluno = {
-//             nome: nome,
-//             idade: idade,
-//             rg: rg,
-//             nota: nota
-//         }
-
-//         Dados.aluno.push(aluno);
-//         quantidade--;
-//     }
+    </p>
     
-// }
+    <br>
+    <textarea class="input-consulta" cols="${colunas}" rows="${linhas}" emit="${_checkInputsDinamicos}" spellcheck="false">
+    ${consulta}
+    </textarea>
+    <span>Altere a consulta e aperte Enter</span>
+    <div class="input-consulta-result" submit="${_checkInputsDinamicos}">                
+    </div>
 
-// var CreateMaterias = () => {
-//     var _materias = [];
-//     var q = materias.length;
-//     var a = Dados.aluno.length;
-//     var parar = 10;
-//     while (parar > 0) {
-//         var i = (Math.random() * 10).toFixed(0);
-//         while(i > q || i == 0){
-//             i = (Math.random() * 10).toFixed(0); 
-//         }   
-//         var _materia = materias[i-1];
-//         var j = (Math.random() * 10).toFixed(0); 
-//         while(j > Dados.aluno.length || j == 0){
-//             j = (Math.random() * 10).toFixed(0); 
-//         }   
-//         console.log(j);
-//         var _aluno = Dados.aluno[j-1];
-//         console.log(_aluno);
-//         var newMateria = { materia: _materia, rg: _aluno.rg };
-//         if ($.inArray(newMateria,_materias)===-1) {
-//             _materias.push(newMateria);
-//             parar--;
-//         }
-//     }
-
-//     Dados.materia = _materias;
-// }
-
-// CreateAlunos();
-// CreateMaterias();
-
-
-// $.ajax({
-//     url: `/inserir/alunos`,
-//     type: 'POST',
-//     contentType: 'application/json',
-//     data: JSON.stringify(Dados),
-//     success: function (data) {
-//         console.log('Sucesso')
-//     },
-//     error: function (error) {
-//         console.error(error);
-//     }
-// }).fail(() => {
-//     console.log('Falha na conexão');
-// })
+    
+    `)
+}
 
 
 
 
+var startContentsActions = () => {
 
-// var dados = request.body;
+    allQueryInputs = $('.input-consulta');
+    allQueryResults = $('.input-consulta-result');
 
-// var InsertAluno = `INSERT INTO aluno VALUES `;
-// var InsertMateria = `INSERT INTO materia VALUES `;
+    for (var input of allQueryInputs) {
+        $(input).on('keyup', (event) => {
 
+            if (event.key == "Enter") {
+                let emited = $(event.currentTarget).attr('emit');
+                let reciever;
+                for (var r of allQueryResults) {
 
-// for(var a of dados.aluno){
-//     InsertAluno += `('${a.nome}',${a.idade},${a.nota},'${a.rg}'),`;
-// }
+                    if ($(r).attr('submit') == emited) {
+                        reciever = r;
+                        break;
+                    }
+                }
 
-// InsertAluno = InsertAluno.substring(0,InsertAluno.length -1);
-// InsertAluno += `;`;
+                let val = $(event.currentTarget).val();
+                var consulta = val;
+                var url = `${host}/executa/query?query=${consulta}`;
+                var url = encodeURI(url);
+                var abort;
+                openLoader();
+                var query = $.getJSON(url, (data) => {
 
-
-// for(var m of dados.materia){
-//     InsertMateria += `('${m.materia}','${m.rg}'),`;
-// }
-
-// InsertMateria = InsertAluno.substring(0,InsertAluno.length -1);
-// InsertMateria += `;`;
-
-// pool.query(InsertAluno,(result,error)=>{
-//     if(error){
-//         console.error(error);
-//     }else{
-//         console.log('Alunos inseridos com sucesso ...');
-//         console.log('Inserindo materias ...');
-//         pool.query(InsertMateria,(result,error)=>{
-//             if(error){
-//                 console.error(error);
-//             }else{
-//                 console.log('Sucesso');
-//             }
-//         })
-//     }
-// })
+                    if (data.erro) {
+                        alert(data.erro);
+                    } else {
+                        $(reciever).empty();
+                        var colunas = [];
+                        var registros = "";
+                        var htmlColunas = `<table><tr>`;
 
 
-// $('#btn_exec_query').on('click', () => {    
-//     openLoader();
-//     var consulta = ('#textbox_consulta').val();
+                        $.each(data[0], function (key, value) {
+                            colunas.push(key);
 
-//     var consulta = validar_consulta(consulta);
-
-//     if (consulta === 'valorinvalido') {
-//         closeLoader();
-//         return;
-
-//     } else {
-
-//         var data = {consulta : consulta};
-
-//         $.ajax({
-//             url: `/executar/consulta`,
-//             type: 'GET',
-//             contentType: 'application/json',
-//             data: JSON.stringify(Dados),
-//             success: function (data) {
-//                 if(data.err){
-//                     alert(data.err);
-//                 }else{
-//                     atualizar_table_result(data);
-//                 }
-
-//             },
-//             error: function (error) {
-//                 alert(error)
-//             }
-//         }).fail(() => {
-//             console.log('Falha na conexão');
-//         })
-
-//     }
-
-//     closeLoader();
-
-// })
+                        });
 
 
-// $.getJSON(`http://192.168.0.148:80/return/shp`,(data)=>{
-//     console.log(data);
-//     var shpSource = new ol.source.Vector();
-//     for(var f of data){
-//         var feature = new ol.format.GeoJSON().readFeature(f);        
-//         shpSource.addFeature(feature)
-//        // console.log(feature);
-//     }
+                        for (var i of colunas) {
 
-//     var shpLayer = new ol.layer.Vector({
-//         source : shpSource
-//     });
+                            htmlColunas += `<th>${i}</th>`;
 
-//     map.addLayer(shpLayer);
 
-// })
+                        }
+                        htmlColunas += `</tr>`;
+
+
+                        for (var i of data) {
+                            registros += `<tr>`;
+                            for (var j of colunas) {
+
+                                if (i[j]) {
+                                    if (i[j].length > 35) {
+                                        registros += `<td>Dado muito grande</td>`
+                                    } else {
+                                        registros += `<td>${i[j]}</td>`
+                                    }
+                                }
+
+
+
+                            }
+                            registros += `</tr>`;
+
+
+                        }
+
+
+                        var tabela = htmlColunas + registros + "</table>";
+
+                        $(reciever).append(tabela);
+
+                    }
+                    clearTimeout(abort);
+                    closeLoader();
+
+
+                }).fail(() => {
+                    clearTimeout(abort);
+                    closeLoader();
+                })
+
+
+                abort = setTimeout(() => {
+                    query.abort();
+                    closeLoader();
+                    alert('Tempo de espera expirado, verifique sua conexão !');
+                }, 10000)
+            }
+
+        })
+    }
+}
+
+
+var startContents = () => {
+
+    setContent(
+        $('#div4'), "Consulta para listar todos os campos da tabela tb_produto",
+        "SELECT * FROM tb_produto limit 10", 50, 2
+    );
+
+    setContent(
+        $('#div4'), "Consultar apenas os nomes dos produtos da tabela tb_produto",
+        "SELECT produto FROM tb_produto limit 10", 50, 2
+    );
+
+    setContent(
+        $('#div4'), "Consultar o produto com o maior preço",
+        "SELECT max(preco) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div4'), "Consultar o produto com o menor preço",
+        "SELECT min(preco) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div4'), "Consultar a media de preços",
+        "SELECT avg(preco) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div4'), "Consultar o número de produtos",
+        "SELECT count(*) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div5'), "Consultar a quantidade do produto em estoque",
+        `  
+    SELECT a.produto, b.quantidade 
+    FROM tb_produto as a, tb_estoque as b 
+    WHERE a.codigo = b.codigo limit 10`,
+        50, 5
+    );
+
+    setContent(
+        $('#div5'), "Consulta utilizando subcolsulta para listar apenas produtos que constem mais de 10 unidades em estoque",
+        `  
+    SELECT a.produto, b.quantidade 
+    FROM tb_produto as a, 
+    ( SELECT * FROM tb_estoque WHERE quantidade > 10) as b 
+    WHERE a.codigo = b.codigo limit 10`,
+        60, 7
+    );
+
+    setContent(
+        $('#div6'), "Consultar os produtos com mais de 10 unidades",
+        `  
+SELECT * FROM tb_estoque WHERE quantidade > 10 limit 10`,
+        70, 3
+    );
+
+    setContent(
+        $('#div6'), "Consultar o produto com codigo 25",
+        `  
+SELECT * FROM tb_estoque WHERE codigo = 25`,
+        70, 3
+    );
+
+
+    setContent(
+        $('#div6'), "Consultar todos produtos onde a quantidade seja maior que a media de quantidade de todos os produtos do estoque",
+        `  
+        SELECT * 
+        FROM tb_estoque 
+        WHERE quantidade > (select avg(quantidade) from tb_estoque);`,
+        70, 6
+    );
+
+    setContent(
+        $('#div6'), "Consultar o produto com maior preço",
+        `  
+    SELECT * 
+    FROM tb_produto 
+    WHERE codigo = (select codigo 
+                from tb_produto 
+                order by preco desc limit 1)`,
+        70, 8
+    );
+
+    setContent(
+        $('#div7'), "Consultar o produto com o maior preço",
+        "SELECT max(preco) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div8'), "Consultar o produto com o menor preço",
+        "SELECT min(preco) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div9'), "Consultar o produto com a media de preços",
+        "SELECT avg(preco) FROM tb_produto", 50, 2
+    );
+
+    setContent(
+        $('#div10'), "Consultar a soma de todas unidades de todos produtos",
+        "SELECT sum(quantidade) FROM tb_estoque", 50, 2
+    );
+
+    setContent(
+        $('#div11'), "Consultar quantos produtos por unidades tems em estoque",
+        `
+        SELECT quantidade, count(*) AS "produtos"
+        FROM tb_estoque 
+        GROUP BY quantidade
+        ORDER BY "produtos" DESC`, 50, 6
+    );
+
+    setContent(
+        $('#div12'), "Consultar todos produtos ordenados por nome",
+        `
+        SELECT *
+        FROM tb_produto
+        ORDER BY produto ASC `, 50, 5
+    );
+
+    setContent(
+        $('#div20'), "Esta consulta ira retornar uma geometria do tipo point, no SRID 4326", `
+        SELECT ST_GEOMFROMTEXT('POINT(398113 7418092)',31983) `, 50, 4
+    );
+
+    setContent(
+        $('#div21'), "Esta consulta ira retornar a geometria da bacia escrita como um texto", `
+        SELECT ST_ASTEXT(geom) FROM cidade WHERE nome ilike 'Jacareí' `, 50, 4
+    );
+
+    setContent(
+        $('#div13'), "Esta consulta ira retornar o nome e a area de cada cidade da tabela cidade", `
+        SELECT nome,ST_AREA(geom) FROM cidade `, 50, 4
+    );
+
+
+    setContent(
+        $('#div14'), "Esta consulta ira retornar o nome e a area de cada cidade da tabela cidade", `
+        SELECT a.nome 
+        FROM cidade as "a" , cidade as "b" 
+        WHERE ST_TOUCHES(a.geom,b.geom)
+        AND b.nome ilike 'Jacareí' `, 50, 7
+
+    );
+
+    setContent(
+        $('#div15'), "Esta consulta ira retornar o nome das estradas que passam por Jacareí", `
+        SELECT a.nome
+        FROM microregiao as "a" , cidade as "b" 
+        WHERE ST_INTERSECTS(a.geom,b.geom) 
+        AND b.nome ilike 'Jacareí' `, 50, 7
+    );
+
+    setContent(
+        $('#div16'), "Esta consulta ira retornar uma geometria com raio de 100m a partir da geometria base.", `
+        SELECT ST_BUFFER(ST_GEOMFROMTEXT('POINT(398113 7418092)',31983),100) `, 60, 4
+    );
+    
+    setContent(
+        $('#div17'), "Esta consulta ira retornar o nome da cidade em que o ponto está localizado", `
+        SELECT nome 
+        FROM cidade 
+        WHERE ST_CONTAINS (geom,ST_GEOMFROMTEXT('POINT(398113 7418092)',31983)); `, 80, 6
+    );
+
+    setContent(
+        $('#div18'), "Esta consulta ira retornar o nome da cidade em que o ponto está dentro", `
+        SELECT nome 
+        FROM cidade 
+        WHERE ST_WITHIN (ST_GEOMFROMTEXT('POINT(398113 7418092)',31983),geom); `, 80, 6
+    );
+
+    setContent(
+        $('#div19'), "Esta consulta ira retornar o ponto central de uma geometria", `
+        SELECT ST_CENTROID(geom),nome 
+        FROM cidade 
+         `, 60, 4
+    );
+
+    
+
+    
+    startContentsActions();
+
+    // simular o click enter
+    var e = $.Event("keyup", { key: "Enter" });
+
+    for (var i of allQueryInputs) {
+        $(i).trigger(e)
+    }
+};
+
+
+startContents();
+

@@ -1,9 +1,3 @@
-<!-- autor: Adriano Marino Balera 
-email: adriano.marino1992@gmail.com
-trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -32,19 +26,20 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
     <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    
+
+    <!-- ICON -->
+    <!-- MANIFEST -->
 </head>
 
 <body>
 
+    <!-- <h2 id="beta_theme">Fase de teste </h2> -->
 
     <div id="fullMenu">
         <h2 style='text-align: center;margin: 10px;font-weight: 700;font-size: 15px;'>Consulta </h2>
         <textarea id="queryTool" spellcheck="false">select * from cidade</textarea>
-        <span style="margin-left:15px;">as "mapa" para aparecer no mapa</span>
         <button id="queryToolBuscar">Buscar</button>
 
         <div id="queryToolResult">
@@ -74,7 +69,7 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
             <h2 onclick="openOneContentDiv('div1')">O que são banco de dados</h2>
             <h2 onclick="openOneContentDiv('div2')">O que são banco de dados Geograficos</h2>
             <h1>
-                Consultas
+                Exemplo de Consultas
             </h1>
             <h2 onclick="openOneContentDiv('div3')">Linguagem SQL</h2>
             <h2 onclick="openOneContentDiv('div4')">SELECT</h2>
@@ -87,7 +82,7 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
             <h2 onclick="openOneContentDiv('div11')">GROUP BY</h2>
             <h2 onclick="openOneContentDiv('div12')">ORDER BY</h2>
             <h1>
-               Consultas Espaciais
+                Exemplo de Consultas Espaciais
             </h1>
             <h2 onclick="openOneContentDiv('div20')">ST_GEOMFROMTEXT</h2>
             <h2 onclick="openOneContentDiv('div21')">ST_ASTEXT</h2>
@@ -124,8 +119,8 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
             <p>Escolha a tabela</p>
             <select id="Base_tabelas">
                 <option value="" selected disabled>Escolha a tabela</option>
-                <option value="tb_produto">tb_produto</option>
-                <option value="tb_estoque">tb_estoque</option>
+                <option value="aluno">aluno</option>
+                <option value="materia">materia</option>
                 <option value="cidade">cidade</option>
                 <option value="microregiao">microgeriao</option>
             </select>
@@ -140,58 +135,65 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
 
             <img src="./img/addtomap.png" class="GoForward" onclick="openOneContentDiv('div2')">
 
-            <h2>O que é banco de dados</h2>
+            <h2>O que são banco de dados</h2>
             <p>
-                O termo banco de dados representa uma coleção de dados que juntas fazem algum sentido. Isto é, pode ser uma
-                coleção de arquivos de textos, varios cadernos, ou então, os banco de dados computacionais, que são dados armazenados em 
-                espaçoes de memoria do computador. 
-                
+                Bancos de dados ou bases de dados são conjuntos de arquivos relacionados entre si com registros sobre
+                pessoas,
+                lugares ou coisas. São coleções organizadas de dados que se relacionam de forma a criar algum sentido
+                (Informação) e dar mais
+                eficiência durante uma pesquisa ou estudo. São de vital importância para empresas e há duas décadas se
+                tornaram a principal peça dos sistemas de informação. Normalmente existem por vários anos sem alterações
+                em sua estrutura.
             </p>
             <p>
-                Os banco de dados computacionais hoje, são de extrema importancia para todos os tipos de trabalhos com dados. Com o uso 
-                desta tecnologia é possivel o armazenamento, consulta, edição , criação e remoção de dados de maneira rapidão e acertiva.
-
-            </p>
-            <p>
-                Os banco de dados são operados pelos SGBDs (Sistema Gerenciador de Banco de Dados), utilizando este tipo de sistema realizamos nossos
-                trabalhos com banco de dados.
+                São operados pelos Sistemas Gerenciadores de Bancos de Dados (SGBD),
+                que surgiram na década de 70. Antes destes, as aplicações usavam sistemas de arquivos do sistema
+                operacional para armazenar suas informações.
+                Na década de 80, a tecnologia de SGBD relacional passou a dominar o mercado, e atualmente utiliza-se
+                praticamente apenas ela. Outro tipo notável é o
+                SGBD Orientado a Objetos, para quando sua estrutura ou as aplicações que o utilizam mudam
+                constantemente.
 
 
             </p>
             <img src="./img/bdicon.jpg"
-                style="position: absolute; top: 230px; width: 400px; left: 50%; margin-left: -200px;" title="fonte : https://www.google.com/imgres?imgurl=https%3A%2F%2Fecoit.com.br%2Fwp-content%2Fuploads%2F2017%2F03%2FENTENDA-OS-DESAFIOS-DO-BIG-DATA-NA-GEST%25C3%2583O-DE-TI.jpg&imgrefurl=https%3A%2F%2Fecoit.com.br%2Fentenda-os-desafios-do-big-data-na-gestao-de-ti%2F&docid=oxHH8MFS-TNdgM&tbnid=RPOAY8RTdgx3zM%3A&vet=10ahUKEwiEjeHwgszkAhUyD7kGHbwwCRYQMwiEASgrMCs..i&w=5994&h=3492&bih=657&biw=1366&q=big%20data&ved=0ahUKEwiEjeHwgszkAhUyD7kGHbwwCRYQMwiEASgrMCs&iact=mrc&uact=8">
+                style="position: absolute; top: 230px; width: 400px; left: 50%; margin-left: -200px;">
         </div>
 
         <div id="div2" class="divContent">
             <img src="./img/addtomap.png" class="GoForward" onclick="openOneContentDiv('div3')">
             <img src="./img/addtomap.png" class="GoBack" onclick="openOneContentDiv('div1')">
-            <h2>O que é Banco de Dados Geograficos</h2>
-            <p>
-                Antes de definirmos o que é um banco de dado geografico, temos que definir o que é um dado geografico. suponhamos os seguintes exemplos:
+            <h2>O que são banco de dados geograficos</h2>
+            <p>Iniciamos nosso artigo falando sobre quem é referência no assunto, o
+                INPE – Instituto Nacional de Pesquisas Espaciais, e como considera os principais conceitos neste
+                assunto.
             </p>
-            
+            <p>
+                O primeiro termo que iremos definir é dado geográfico, suponhamos os seguintes exemplos:
+            </p>
 
             <p>
-                Quais são as cidades vizinhas de Jacareí ? <br>
-                Qual a distancia entre um ponto A e um ponto B ? <br>
-                Qual a area de um lote ?
+                Quais são as cidades vizinhas ao município de Capão Redondo? <br>
+                A polícia precisando da seguinte informação: Quais ruas estão em um raio de um quilômetro em relação ao
+                local onde aconteceu um furto? <br>
+                Os extremos do país: Qual a distância entre Monte Caburaí- RO e Santa Vitória do Palmar- RS?
             </p>
             <p>
-                Um banco de dados tradicional consegue armazenar dados de varios tipos, integer(numeros inteiros) e 
-                text(texto) por exemplos, mas com apenas estas informações não seria possivel responder as nossas perguntas. O dado 
-                geografico é um dado que alem de informações alfanumericas, possui tambem informações que o representam no "espaço", 
-                ou seja, tem uma geometria relacionada, e com esta geometria podemos realizar consultas espacias e, então, responder 
-                as nossas questões
+                A resposta pra qualquer uma das perguntas contém informações geográficas específicas.
+                Um banco de dados qualquer armazena informações sobre um endereço ou CEP, mas essa informação possui
+                caráter secundário. Já para um dado como os exemplos citados é necessário o uso de dados geográficos.
+                Tais dados possuem uma estrutura mais adequada para responder de maneira específica e até mostrar
+                graficamente a resposta.
             </p>
-            
             <p>
-                Aprofundando essa declaração, temos a definição de banco de dados geográficos,um Banco de Dados Geográfico é uma 
-                coleção de dados coerente e relacionável, suportando feições
+                Aprofundando essa declaração, temos a definição de banco de dados geográficos, segundo Zoneamento
+                Ecológico Econômico de Minas Gerais.
+                Um Banco de Dados Geográfico é uma coleção de dados coerente e relacionável, suportando feições
                 geométricas em suas tabelas.
             </p>
 
             <img src="./img/bdg.png"
-                style="position: absolute; top: 300px; width: 400px; left: 50%; margin-left: -200px;" title=" fonte : https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjMy--NhMzkAhWnK7kGHUyVB54QjRx6BAgBEAQ&url=http%3A%2F%2Fwww.clickgeo.com.br%2Fconceitos-dados-geograficos%2F&psig=AOvVaw0jxvZmh3Q-uXdjfElN372M&ust=1568403388040611">
+                style="position: absolute; top: 270px; width: 400px; left: 50%; margin-left: -200px;">
         </div>
 
         <div id="div3" class="divContent">
@@ -218,7 +220,7 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
 
 
             <img src="./img/sql.jpg"
-                style="position: absolute; top: 270px; width: 30%; left: 50%; margin-left: -15%;" title="fonte : https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrSazjtDXc0lnT5yyPrr737sb-OMjvBUXrKz4wztsM4XikSpTS">
+                style="position: absolute; top: 230px; width: 400px; left: 50%; margin-left: -200px;">
         </div>
 
 
@@ -233,7 +235,43 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
             <p>
                 Dentro de um SELECT podemos, alem de selecionar campos, tambem utilizar funções.
             </p>
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> nome, idade, nota <span class="Clausula"></span>FROM
+                aluno
+            </p>
+            <p>
+                Esta consulta irá retornar o nome, a idade e a nota de todos os alunos da tabela.
+            </p>
 
+            <br><br>
+
+            <img src="./img_consultas/1.PNG">
+
+            <br><br><br><br>
+
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> nome   <span class="Clausula">AS</span> "aluno", nota <span class="Clausula">AS</span>  "media"  <span class="Clausula"></span>FROM
+                aluno
+            </p>
+            <p>
+                Você tambem pode escolher um apelido para o retorno da sua consulta utilizando a palavra reservada 'AS'
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/18.PNG">
+            <br><br><br><br>
+
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> 'Exemplo de SELECT'   <span class="Clausula">AS</span> "O nome que quiser" 
+            </p>
+            <p>
+                Você não precisa de uma tabela para realizar SELECTs
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/19.PNG">
         </div>
 
 
@@ -247,7 +285,28 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
             <p>
                 Dentro do FROM informamamos todas as tabelas que iremos usar.
             </p>
-           
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> * <span class="Clausula">FROM</span> aluno
+            </p>
+            <p>
+                Esta consulta irá retornar todos os campos da tabela aluno.
+            </p>
+
+            <br><br>
+
+            <img src="./img_consultas/2.PNG" >
+            <br><br><br><br>
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> * <span class="Clausula">FROM</span> aluno, materia<span class="Clausula"> LIMIT</span> 1
+            </p>
+            <p>
+                Você pode consultar mais de uma tabela ao mesmo tempo, mas cuidado, o retorno será a combinação de todos resultados da primeira tabela x todos os resultados da segunda tabela.
+            </p>
+
+            <br><br>
+
+            <img src="./img_consultas/20.PNG" >
+            <br><br><br><br>
         </div>
 
         <div id="div6" class="divContent">
@@ -260,7 +319,47 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
             <p>
                 Dentro do WHERE escrevemos condições que retornarão valores booleans(true/false).
             </p>
-            
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> aluno.nome as "aluno", materia.nome as "materia" <span
+                    class="Clausula">FROM</span> aluno,materia
+                <span class="Clausula">WHERE</span> materia.nome = 'matematica' <span class="Clausula">AND</span>
+                materia.aluno = aluno.rg
+            </p>
+            <p>
+                Esta consulta ira retornar o nome de todos os alunos que tiverem cursando a materia matematica
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/3.PNG">
+            <br><br> <br><br>
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> * <span
+                    class="Clausula">FROM</span> materia
+                <span class="Clausula">WHERE</span> nome = 'matematica' 
+            </p>
+            <p>
+                Esta consulta ira retornar os registros onde o nome da materia é matematica
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/21.PNG">
+            <br><br> <br><br>
+
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> * <span
+                    class="Clausula">FROM</span> aluno
+                <span class="Clausula">WHERE</span> nome = 'adriano' 
+            </p>
+            <p>
+                Esta consulta ira retornar os registros onde o nome seja adriano
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/22.PNG">
+            <br><br> <br><br>
         </div>
 
         <div id="div7" class="divContent">
@@ -271,7 +370,16 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função agrupadora MAX() é utilizada para obter o maior valor dentre todos os valores de um campo.
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT MAX</span>(nota) <span class="Clausula">FROM</span> aluno
+            </p>
+            <p>
+                Esta consulta ira retornar a maior nota da tabela aluno
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/4.PNG" ">
         </div>
 
         <div id="div8" class="divContent">
@@ -282,7 +390,16 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função agrupadora MIN() é utilizada para obter o menor valor dentre todos os valores de um campo.
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT MIN</span>(nota) <span class="Clausula">FROM</span> aluno
+            </p>
+            <p>
+                Esta consulta ira retornar a menor nota da tabela aluno
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/5.PNG" >
         </div>
 
         <div id="div9" class="divContent">
@@ -293,7 +410,16 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função agrupadora AVG() é utilizada para obter a media dos valores de um campo.
             </p>
 
-           
+            <p>
+                Exemplo : <span class="Clausula">SELECT AVG</span>(nota) <span class="Clausula">FROM</span> aluno
+            </p>
+            <p>
+                Esta consulta ira retornar a media das nota da tabela aluno
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/6.PNG" >
         </div>
 
 
@@ -305,7 +431,16 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função agrupadora SUM() é utilizada para obter a soma dos valores de um campo.
             </p>
 
-         
+            <p>
+                Exemplo : <span class="Clausula">SELECT SUM</span>(nota) <span class="Clausula">FROM</span> aluno
+            </p>
+            <p>
+                Esta consulta ira retornar a soma das nota da tabela aluno
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/8.PNG">
         </div>
 
 
@@ -317,7 +452,18 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A palavra reservada 'GROUP BY' é utilizada para agrupar valores de acordo com algum campo da tabela.
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> materia.nome,<span class="Clausula">COUNT(*)</span> <span
+                    class="Clausula">FROM</span>
+                materia <span class="Clausula">GROUP BY</span> materia.nome
+            </p>
+            <p>
+                Esta consulta ira retornar a quantidade de alunos cursando cada materia
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/7.PNG" >
         </div>
 
         <div id="div12" class="divContent">
@@ -328,7 +474,19 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A palavra reservada 'ORDER BY' é utilizada para ordenar valores de algum campo da tabela.
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> materia.nome,<span class="Clausula">COUNT</span>(*) <span
+                    class="Clausula">FROM</span> materia
+                <span class="Clausula">GROUP BY</span> materia.nome <span class="Clausula">ORDER BY COUNT</span>(*)
+                <span class="Clausula">DESC</span>
+            </p>
+            <p>
+                Esta consulta ira retornar a quantidade de alunos cursando cada materia ordernados do maior para o menor
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/7.PNG" >
         </div>
 
 
@@ -341,7 +499,17 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 Poligono.
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT </span>nome,<span class="Clausula">ST_AREA</span>(geom) <span
+                    class="Clausula">FROM</span> cidade
+            </p>
+            <p>
+                Esta consulta ira retornar o nome e a area de cada cidade da tabela cidade
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/9.PNG">
         </div>
 
 
@@ -355,7 +523,18 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 o retorno será true
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> a.nome <span class="Clausula">FROM</span> cidade as "a" ,
+                cidade as "b" <span class="Clausula">
+                    WHERE ST_TOUCHES</span>(a.geom,b.geom) <span class="Clausula">AND </span>b.nome = 'Jacareí'
+            </p>
+            <p>
+                Esta consulta ira retornar o nome das cidades vizinhas de Jacareí
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/10.PNG" >
         </div>
 
         <div id="div15" class="divContent">
@@ -369,7 +548,18 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 o retorno será true
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> a.nome <span class="Clausula">FROM</span> microregiao as
+                "a" , cidade as "b" <span class="Clausula">WHERE ST_INTERSECTS</span>(a.geom,b.geom) AND
+                b.nome = 'Jacareí'
+            </p>
+            <p>
+                Esta consulta ira retornar o nome das estradas que passam por Jacareí
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/11.PNG">
         </div>
 
 
@@ -385,7 +575,17 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 Atenção, o calculo é feito baseado no SRID da geometria selecionada
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT ST_BUFFER</span>(<span
+                    class="Clausula">ST_GEOMFROMTEXT</span>('POINT(398113 7418092)',31983),100)
+            </p>
+            <p>
+                Esta consulta ira retornar uma geometria com raio de 100m a partir da geometria base.
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/17.PNG">
         </div>
 
         <div id="div17" class="divContent">
@@ -396,7 +596,18 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função ST_CONTAINS é utlizada para verificar se uma geometria comtem a outra em seu interior
             </p>
 
-           
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> nome <span class="Clausula">FROM</span> cidade <span
+                    class="Clausula">WHERE ST_CONTAINS</span>
+                (geom,<span class="Clausula">ST_GEOMFROMTEXT</span>('POINT(398113 7418092)',31983));
+            </p>
+            <p>
+                Esta consulta ira retornar o nome da cidade em que o ponto está localizado;
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/13.PNG">
         </div>
 
         <div id="div18" class="divContent">
@@ -407,18 +618,39 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função ST_WITHIN é utlizada para verificar se uma geometria esta totalmente dentro da outra
             </p>
 
-           
+            <p>
+                Exemplo : <span class="Clausula">SELECT</span> nome <span class="Clausula">FROM</span> cidade <span
+                    class="Clausula">WHERE ST_WITHIN</span>
+                (<span class="Clausula">ST_GEOMFROMTEXT</span>('POINT(398113 7418092)',31983),geom); </p>
+            <p>
+                Esta consulta ira retornar o nome da cidade em que o ponto está localizado, da mesma maneira que a
+                ST_CONTAINS, mudando apenas a maneira como a buscar é feita;
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/13.PNG" >
         </div>
 
         <div id="div19" class="divContent">
-            
+            <img src="./img/addtomap.png" class="GoForward" onclick="openOneContentDiv('div20')">
             <img src="./img/addtomap.png" class="GoBack" onclick="openOneContentDiv('div18')">
             <h2>ST_CENTROID</h2>
             <p>
                 A função ST_CENTROID é utilizada para obter o centro de um poligono
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT ST_CENTROID</span>(geom) <span class="Clausula">FROM</span>
+                cidade <span class="Clausula">WHERE</span> nome ilike 'Jacareí'
+            </p>
+            <p>
+                Esta consulta ira retornar o centro da geometria da bacia do Paraguai
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/14.PNG">
         </div>
 
 
@@ -431,7 +663,16 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 geometry
             </p>
 
-          
+            <p>
+                Exemplo : <span class="Clausula">SELECT ST_GEOMFROMTEXT</span>('POINT(398113 7418092)',31983);
+            </p>
+            <p>
+                Esta consulta ira retornar uma geometria do tipo point, no SRID 4326
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/15.PNG" >
 
         </div>
 
@@ -443,12 +684,22 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
                 A função ST_ASTEXT é utilizada para transformar uma geometria em uma geometria descrita como texto
             </p>
 
-           
+            <p>
+                Exemplo : <span class="Clausula">SELECT ST_ASTEXT</span>(geom) <span class="Clausula">FROM</span> cidade
+                <span class="Clausula">WHERE </span>nome ilike 'Jacareí';
+            </p>
+            <p>
+                Esta consulta ira retornar a geometria da bacia escrita como um texto.
+            </p>
+
+
+            <br><br>
+            <img src="./img_consultas/16.PNG" >
         </div>
 
 
         <div id="tentevc" draggable="true">
-            <h2>Tente você </h2>
+            <h2>Tente vc mesmo</h2>
         </div>
     </div>
 
@@ -740,7 +991,10 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
         <br>
         <input type="file" id="add_file_feature" style="display: none;">
 
-     
+        <!-- <form action="upload/file/features" method="post" enctype="multipart/form-data" style="display: none;">
+    <input type="file" name="filetoupload" multiple id="add_file_feature"><br>
+   <input type="submit" id="AddFile_tools_buttom_real">
+   </form> -->
         <h2 class="cat_teme">Descrição : </h2>
         <input type="text" id="add_file_descricao" class="input" placeholder="breve descrição...">
         <button id="AddFile_tools_buttom">Utilizar</button>
@@ -953,6 +1207,15 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
 
 
 
+
+    <!-- <label class="control control-checkbox"> ====== EXEMPLO DE CHECKBOX======
+    FreeHand
+<input type="checkbox" checked="checked" class="LayerChecked" name="freehand" />
+<div class="control_indicator"></div>
+</label> -->
+
+
+
     <div id="desenharVector" draggable=true>
         <h2 class="cat_teme">Tipo de geometria : </h2>
         <select name="" id="tipo_desenhar" class="sel_teme_white">
@@ -1093,7 +1356,9 @@ trabalho de conclusão do curso de Geoprocessamento , FATEC - Jacareí  -->
     <!-- JQUERY JS -->
     <script src="jquery/jquery-3.3.1.js"></script>
     <!-- OPENLAYERS JS -->
-    <script src="ol_465/ol.js"></script>    
+    <script src="ol_465/ol.js"></script>
+    <!-- MAP JS -->
+    <!-- <script src="js/map.js"></script>  -->
     <!-- MAIN JS -->
     <script src="js/main.js" id="script"></script>
 

@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "run": "node server.js"
+    "start": "forever server.js",
+    "restart" : "forever restart server.js",
+    "stop" : "forever stop server.js",
+    "deve": "nodemon server.js"
   },
   "keywords": [],
   "author": "adriano marino balera",

@@ -354,6 +354,7 @@ html, body {
     border-bottom: 2px solid #cec6c652;
     border-radius: 5px;
     width: 100px;
+    
 }
 #queryToolResult{
     width: 90%;
@@ -363,7 +364,12 @@ html, body {
     height: 63%;
     background-color: white;
 }
+#queryToolResult table{
+width: 100%;
+}
+
 #queryToolResult th,td{
+    padding: 2px;
     border: 1px solid #d6c1c193;
     
 }
@@ -2297,7 +2303,7 @@ main {
       width: 100%;
       height: 100%;
       background-color: rgb(241, 237, 237);
-      z-index: 60;
+      z-index: 200;
       border: 2px solid #cec9c93e;
       overflow: auto;
   }
@@ -2339,7 +2345,7 @@ main {
 
   #tutoriasCorpoMenu h1{
 
-    color: rgb(243, 235, 235);
+    color: rgb(255, 8, 8);
     font-size: 15px;
     text-align: left;
     margin: 10px;
@@ -2359,11 +2365,10 @@ main {
   }
 
   .divContent h2{
-    color: rgb(24, 23, 23);
-    font-size: 17px;
+    color: rgb(4, 18, 146);
+    font-size: 19px;
     text-align: center;
-    margin: 10px;
-    
+    margin: 10px;    
     font-weight: 700;
     margin: 25px;
   }
@@ -2429,7 +2434,9 @@ main {
     position: absolute;
     top: 20px;
     right: 30px;
-    width: 50px;
+    width: 30px;
+    cursor: pointer;
+
    
 }
 
@@ -2437,7 +2444,8 @@ main {
     position: absolute;
     top: 22px;
     left: 20px;
-    width: 50px;
+    width: 30px;
+    cursor: pointer;
     -webkit-transform:rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
@@ -2496,4 +2504,54 @@ main {
     cursor: pointer;
     background-color: #f6f3f3;
     box-shadow: 2px 2px #eae8e8;
+}
+
+.input-consulta{
+    background-color: #ebebeb;
+    
+    margin-left: 10px;
+   
+    padding: 5px;
+    font-weight: 700;
+    color: #040851;
+    font-size: 15px;
+}
+
+.input-consulta-result{
+    width: 600px;
+    margin: 10px;
+
+}
+.input-consulta-result table{
+    width: 400px;
+}
+
+.input-consulta-result table th{
+    font-size: 15px;
+    border: 1px solid gray;
+}
+
+.input-consulta-result table td{
+    font-size: 13px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+#Base_result th{
+    font-size: 15px;
+    border: 1px solid gray;
+}
+
+#Base_result td{
+    font-size: 13px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+#Base_result table{
+    width: 80%;
+}
+span{
+    color: red;
+    font-weight: 700;
+    font-size: 12px;
 }
