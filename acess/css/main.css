@@ -711,11 +711,11 @@ width: 100%;
 }
 .cat_teme_folders{
     color: black;
-    font-size: 14px;
+    font-size: 12px;
     
 }
 h2{
-    font-size: 15px;
+    font-size: 12px;
 }
 .cat_teme_folders:hover{
     font-weight: 700;
@@ -1023,7 +1023,7 @@ main {
     border: 5px solid rgba(252, 248, 248, 0.541);
 }
 .cat_teme{
-    font-size: 14px;
+    font-size: 12px;
     position: relative;
     margin:5px;
     color: black;

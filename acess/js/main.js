@@ -285,15 +285,15 @@ function getFeatureId(pixel) {
 
         var f = feature.N;
         $('#popup').append(`<img src="img/fechar_vermelho.png" style="position: absolute;top: 1px;right: 1px;width: 20px;cursor: pointer;" onclick="closePopUpfromx()">`);
-        $('#popup').append(`<h2 class="cat_teme" style="text-align: center;font-size : 18px;">${f.arquivo}</h2>`);
+        $('#popup').append(`<h2 class="cat_teme" style="text-align: center;font-size : 14px;">${f.arquivo}</h2>`);
         for (var keys in f) {
 
 
             if (keys != "fotoDenuncia" && keys != "fotoOcorrencia" && keys != "geometry") {
-                $('#popup').append(` <h2 class="cat_teme">${keys} : </h2>
+                $('#popup').append(` <h2 class="cat_teme" style="font-size : 12px;">${keys} : </h2>
                         <input type="text" class="input" disabled value="${f[keys]}">`);
             } else if (keys == "fotoDenuncia" || keys == "fotoOcorrencia") {
-                $('#popup').append(`<h2 class="cat_teme">${keys} : </h2><div id="marker">
+                $('#popup').append(`<h2 class="cat_teme" style="font-size : 12px;">${keys} : </h2><div id="marker">
                 <img src="data:image/png;base64, ${f[keys]}" id="fotoAtual">
             </div>`)
 
@@ -3132,7 +3132,7 @@ SELECT * FROM tb_estoque WHERE codigo = 25`,
     );
 
     setContent(
-        $('#div15'), "Esta consulta ira retornar o nome das estradas que passam por Jacareí", `
+        $('#div15'), "Esta consulta ira retornar o nome das microregiões em que suas geometrias passam por por Jacareí", `
         SELECT a.nome
         FROM microregiao as "a" , cidade as "b" 
         WHERE ST_INTERSECTS(a.geom,b.geom) 
