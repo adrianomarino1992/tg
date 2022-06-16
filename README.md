@@ -1,0 +1,21 @@
+# Trabalho de conclusão de curso Fatec-Jacarei
+
+Trabalho de conclusão de curso em Geoprocessamento.
+
+## INSTAÇÃO
+
+Clone este repositorio e rode o comando ```node server --create-database ``` para criar o banco de dados. 
+
+
+<img src="/Public/Img/img_1.png" alt="Login" title="Login">
+
+<img src="/Public/Img/img_2.png" alt="Main" title="Main">
+
+```
+## OBSERVAÇÕES
+
+refatoração em 11/06/2022
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

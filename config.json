@@ -1,0 +1,13 @@
+{
+    "server" : 
+    {
+        "port" : 5642
+    },
+    "postgres": {
+        "host": "localhost",
+        "port": 5434,
+        "user": "supervisor",
+        "pass": "sup",
+        "database": "bd_sma"
+    }
+}
