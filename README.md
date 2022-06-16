@@ -4,7 +4,7 @@ Trabalho de conclusão de curso em Geoprocessamento.
 
 ## INSTAÇÃO
 
-Clone este repositorio e execute o comando ```node server --create-database ``` para criar o banco de dados. 
+Clone este repositorio e execute o comando ```node server --create-database ``` para criar o banco de dados e executar a aplicação. 
 
 
 <img src="img_1.png" alt="Login" title="Login">
