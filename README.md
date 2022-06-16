@@ -7,9 +7,9 @@ Trabalho de conclusão de curso em Geoprocessamento.
 Clone este repositorio e rode o comando ```node server --create-database ``` para criar o banco de dados. 
 
 
-<img src="/Public/Img/img_1.png" alt="Login" title="Login">
+<img src="img_1.png" alt="Login" title="Login">
 
-<img src="/Public/Img/img_2.png" alt="Main" title="Main">
+<img src="img_2.png" alt="Main" title="Main">
 
 ```
 ## OBSERVAÇÕES
