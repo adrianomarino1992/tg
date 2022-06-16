@@ -1409,73 +1409,7 @@ busca_desenhar_cat_sel.on('change', () => {
 })
 
 
-var buscar_buttom = $('#buscar_buttom');
-buscar_buttom.on('click', () => {
 
-    var secretaria = $('#busca_desenhar_cat_sel').val();
-    var categoria = $('#busca_desenhar_sel').val();
-    var WKT = new ol.format.WKT();
-    var features = vectorBuscar.getSource().getFeatures();
-
-    if (features.length > 0) {
-        for (var i = 0; i < features.length; i++) {
-            var geom = features[i].getGeometry();
-            var geom2WKT = WKT.writeGeometry(geom);
-            var url = `http://10.68.54.169:443/intersects?geom='${geom2WKT}'&secretaria='${secretaria}'&categoria='${categoria}'`;
-            url = encodeURI(url);
-            //  console.log(url);
-            openLoader();
-            var abort;
-            var query = $.getJSON(url, function (data) {
-                if (data.length > 1) {
-                    alert(`Resultado da busca : ${data.length} registros.`);
-                } else {
-                    alert(`Nenhum registro encontrado para esta pesquisa.`);
-                }
-                closeLoader();
-                clearTimeout(abort);
-
-                try {
-
-                    if (secretaria == "Meio_Ambiente") {
-                        for (var i = 0; i < data.length; i++) {
-                            var feature = createFeatureFromGeoJson(data[i], 1);
-                            //   console.log(feature);
-                            LayerResultBuscar.getSource().addFeatures(feature);
-                        }
-                    } else {
-                        for (var i = 0; i < data.length; i++) {
-                            var feature = createFeatureFromGeoJson(data[i], 2);
-                            //console.log(feature);
-                            LayerResultBuscar.getSource().addFeatures(feature);
-                        }
-                    }
-                } catch{
-                    console.log('ops, algo deu errado !');
-                }
-            })
-            abort = setTimeout(() => {
-                query.abort();
-                closeLoader();
-                alert('Tempo de espera expirado, verifique sua conexão !');
-            }, 10000)
-        }
-    }
-    for (var i in features) {
-        vectorBuscar.getSource().removeFeature(features[i]);
-    }
-    var obj = { 'camada': LayerResultBuscar, 'nome': 'Resultado Busca' };
-    if (allVisibleLayers.layers.indexOf(obj) == -1) {
-
-        allVisibleLayers.layers.push(obj);
-    }
-    setTimeout(() => {
-        removeBuscarInteraction();
-        buscarInteracionOpened = false;
-    }, 100);
-
-
-})
 
 var vectorResultBuscar = new ol.source.Vector({
 });

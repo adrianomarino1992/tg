@@ -26,11 +26,11 @@ app.use(bodyParser.json({ limit: '50mb' }));
 
 var d = new Date();
 var pool = new Pool({
-    user: 'postgres',
+    user: 'supervisor',
     host: 'localhost',
     database: 'bd_sma',
-    password: 'b2btisenha123',
-    port: 5432
+    password: 'sup',
+    port: 5434
 })
 
 // var shp2Json = [];
@@ -161,18 +161,29 @@ app.get('/executa/query', function (req, res) {
     }
 
 
-    pool.query(consulta, (err, resp) => {
+    pool.query(consulta, (err, resp) => 
+    {
         if (resp) {
+            console.log("dsadsadsa")
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(resp.rows));
-            //  console.log(JSON.stringify(resp.rows));
+            
         } else {
+            console.log("dsadsadsadsa")
             res.setHeader('Content-Type', 'application/json');
             var error = err;
-            res.send(JSON.stringify({ erro: error.toString() }));            
+            res.send(JSON.stringify({ erro: error.toString() }));     
+                  
+        }
+
+        if(err)
+        {console.log("dssssssssssssssssssdsadsadsa")
+
         }
 
     })
+
+
 
 })
 
