@@ -2211,18 +2211,10 @@ function getFeatureIdAuxiliar(pixel) {
         for (var keys in f) {
 
 
-            if (keys != "fotoDenuncia" && keys != "fotoOcorrencia" && keys != "geometry") {
+            if (keys != "geometry") {
                 $('#popup').append(` <h2 class="cat_teme">${keys} : </h2>
                         <input type="text" class="input" disabled value="${f[keys]}">`);
-            } else if (keys == "fotoDenuncia" || keys == "fotoOcorrencia") {
-                $('#popup').append(`<h2 class="cat_teme">${keys} : </h2><div id="marker">
-                <img src="data:image/png;base64, ${f[keys]}" id="fotoAtual">
-            </div>`)
-
-
-
-
-            }
+            } 
 
         }
 
